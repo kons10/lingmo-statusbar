@@ -1,7 +1,7 @@
 /*
- * Copyright (C) 2021 CuteOS Team.
+ * Copyright (C) 2021 LingmoOS Team.
  *
- * Author:     cuteos <cuteos@foxmail.com>
+ * Author:     lingmoos <lingmo@lingmo.org>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -29,7 +29,8 @@
 #include "poweractions.h"
 #include "notifications.h"
 #include "backgroundhelper.h"
-
+#include "lyricshelper.h"
+#include "permissionsurveillance.h"
 #include "appearance.h"
 #include "brightness.h"
 #include "battery.h"
@@ -39,7 +40,7 @@ int main(int argc, char *argv[])
     QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
     QApplication app(argc, argv);
 
-    const char *uri = "Cute.StatusBar";
+    const char *uri = "Lingmo.StatusBar";
     qmlRegisterType<SystemTrayModel>(uri, 1, 0, "SystemTrayModel");
     qmlRegisterType<ControlCenterDialog>(uri, 1, 0, "ControlCenterDialog");
     qmlRegisterType<Appearance>(uri, 1, 0, "Appearance");
@@ -49,9 +50,11 @@ int main(int argc, char *argv[])
     qmlRegisterType<AppMenuApplet>(uri, 1, 0, "AppMenuApplet");
     qmlRegisterType<PowerActions>(uri, 1, 0, "PowerActions");
     qmlRegisterType<Notifications>(uri, 1, 0, "Notifications");
+    qmlRegisterType<LyricsHelper>(uri, 1, 0, "LyricsHelper");
     qmlRegisterType<BackgroundHelper>(uri, 1, 0, "BackgroundHelper");
+    qmlRegisterType<PermissionSurveillance>(uri, 1, 0, "PermissionSurveillance");
 
-    QString qmFilePath = QString("%1/%2.qm").arg("/usr/share/cute-statusbar/translations/").arg(QLocale::system().name());
+    QString qmFilePath = QString("%1/%2.qm").arg("/usr/share/lingmo-statusbar/translations/").arg(QLocale::system().name());
     if (QFile::exists(qmFilePath)) {
         QTranslator *translator = new QTranslator(QApplication::instance());
         if (translator->load(qmFilePath)) {
@@ -63,7 +66,7 @@ int main(int argc, char *argv[])
 
     StatusBar bar;
 
-    if (!QDBusConnection::sessionBus().registerService("com.cute.Statusbar")) {
+    if (!QDBusConnection::sessionBus().registerService("com.lingmo.Statusbar")) {
         return -1;
     }
 

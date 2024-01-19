@@ -29,7 +29,7 @@
 #include <QDBusMessage>
 #include <QDBusServiceWatcher>
 
-static const char *DBUS_SERVICE = "com.cute.cappmenu";
+static const char *DBUS_SERVICE = "com.lingmo.cappmenu";
 static const char *DBUS_OBJECT_PATH = "/CAppMenu";
 
 AppmenuDBus::AppmenuDBus(QObject *parent)

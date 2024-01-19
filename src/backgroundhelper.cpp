@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2021 - 2022 CuteOS Team.
+ * Copyright (C) 2021 - 2022 LingmoOS Team.
  *
  * Author:     Reion Wong <reionwong@gmail.com>
  *

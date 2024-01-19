@@ -1,9 +1,28 @@
+/*
+ * Copyright (C) 2021 LingmoOS Team.
+ *
+ * Author:     Reion Wong <aj@lingmoos.com>
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
 import QtQuick 2.12
 import QtQuick.Layouts 1.12
 import QtQuick.Controls 2.12
 import QtGraphicalEffects 1.0
-import CuteUI 1.0 as CuteUI
-import Cute.Mpris 1.0
+import LingmoUI 1.0 as LingmoUI
+import Lingmo.Mpris 1.0
 
 Item {
     id: control
@@ -42,15 +61,15 @@ Item {
     Rectangle {
         anchors.fill: parent
         color: "white"
-        radius: CuteUI.Theme.bigRadius
-        opacity: CuteUI.Theme.darkMode ? 0.2 : 0.7
+        radius: LingmoUI.Theme.bigRadius
+        opacity: LingmoUI.Theme.darkMode ? 0.2 : 0.7
     }
 
     RowLayout {
         id: _mainLayout
         anchors.fill: parent
-        anchors.margins: CuteUI.Units.largeSpacing
-        spacing: CuteUI.Units.largeSpacing
+        anchors.margins: LingmoUI.Units.largeSpacing
+        spacing: LingmoUI.Units.largeSpacing
 
         Image {
             id: defaultImage
@@ -68,7 +87,7 @@ Item {
 
                     Rectangle {
                         anchors.fill: parent
-                        radius: CuteUI.Theme.bigRadius
+                        radius: LingmoUI.Theme.bigRadius
                     }
                 }
             }
@@ -90,7 +109,7 @@ Item {
 
                     Rectangle {
                         anchors.fill: parent
-                        radius: CuteUI.Theme.bigRadius
+                        radius: LingmoUI.Theme.bigRadius
                     }
                 }
             }
@@ -135,12 +154,12 @@ Item {
             RowLayout {
                 id: _buttonsLayout
                 anchors.fill: parent
-                spacing: CuteUI.Units.smallSpacing
+                spacing: LingmoUI.Units.smallSpacing
 
                 IconButton {
                     width: 30
                     height: 30
-                    source: "qrc:/images/" + (CuteUI.Theme.darkMode ? "dark" : "light") + "/media-skip-backward-symbolic.svg"
+                    source: "qrc:/images/" + (LingmoUI.Theme.darkMode ? "dark" : "light") + "/media-skip-backward-symbolic.svg"
                     onLeftButtonClicked: if (mprisManager.canGoPrevious) mprisManager.previous()
                     visible: mprisManager.canGoPrevious
                     Layout.alignment: Qt.AlignRight
@@ -149,8 +168,8 @@ Item {
                 IconButton {
                     width: 30
                     height: 30
-                    source: control.isPlaying ? "qrc:/images/" + (CuteUI.Theme.darkMode ? "dark" : "light") + "/media-playback-pause-symbolic.svg"
-                                              : "qrc:/images/" + (CuteUI.Theme.darkMode ? "dark" : "light") + "/media-playback-start-symbolic.svg"
+                    source: control.isPlaying ? "qrc:/images/" + (LingmoUI.Theme.darkMode ? "dark" : "light") + "/media-playback-pause-symbolic.svg"
+                                              : "qrc:/images/" + (LingmoUI.Theme.darkMode ? "dark" : "light") + "/media-playback-start-symbolic.svg"
                     Layout.alignment: Qt.AlignRight
                     visible: mprisManager.canPause || mprisManager.canPlay
                     onLeftButtonClicked:
@@ -162,7 +181,7 @@ Item {
                 IconButton {
                     width: 30
                     height: 30
-                    source: "qrc:/images/" + (CuteUI.Theme.darkMode ? "dark" : "light") + "/media-skip-forward-symbolic.svg"
+                    source: "qrc:/images/" + (LingmoUI.Theme.darkMode ? "dark" : "light") + "/media-skip-forward-symbolic.svg"
                     Layout.alignment: Qt.AlignRight
                     visible: mprisManager.canGoNext
                     onLeftButtonClicked: if (mprisManager.canGoNext) mprisManager.next()

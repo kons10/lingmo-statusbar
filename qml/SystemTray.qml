@@ -3,8 +3,8 @@ import QtQuick.Layouts 1.12
 import QtQuick.Controls 2.12
 import QtGraphicalEffects 1.0
 
-import Cute.StatusBar 1.0
-import CuteUI 1.0 as CuteUI
+import Lingmo.StatusBar 1.0
+import LingmoUI 1.0 as LingmoUI
 
 ListView {
     id: trayView
@@ -13,12 +13,12 @@ ListView {
     layoutDirection: Qt.RightToLeft
     interactive: false
     clip: true
-    spacing: CuteUI.Units.smallSpacing / 2
+    spacing: LingmoUI.Units.smallSpacing / 2
 
-    property real itemWidth: rootItem.iconSize + CuteUI.Units.largeSpacing
+    property real itemWidth: rootItem.iconSize + LingmoUI.Units.largeSpacing
 
     Layout.fillHeight: true
-    Layout.preferredWidth: (itemWidth + (count - 1) * CuteUI.Units.smallSpacing) * count
+    Layout.preferredWidth: (itemWidth + (count - 1) * LingmoUI.Units.smallSpacing) * count
 
     model: SystemTrayModel {
         id: trayModel
@@ -91,18 +91,18 @@ ListView {
             onTriggered: iconItem.updateIcon()
         }
 
-        // ColorOverlay {
-        //     id: iconOverlay
-        //     anchors.centerIn: parent
-        //     width: rootItem.iconSize
-        //     height: width
-        //     source: iconItem
-        //     color: rootItem.textColor
-        //     opacity: rootItem.darkMode ? 1 : 0.7
-        //     visible: model.canColorOverlay
-        // }
+        ColorOverlay {
+            id: iconOverlay
+            anchors.centerIn: parent
+            width: rootItem.iconSize
+            height: width
+            source: iconItem
+            color: rootItem.textColor
+            opacity: rootItem.darkMode ? 1 : 0.7
+            visible: model.canColorOverlay
+        }
 
-        CuteUI.IconItem {
+        LingmoUI.IconItem {
             id: iconItem
             anchors.centerIn: parent
             width: rootItem.iconSize

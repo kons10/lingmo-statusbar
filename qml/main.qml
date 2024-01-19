@@ -1,12 +1,31 @@
+/*
+ * Copyright (C) 2021 LingmoOS Team.
+ *
+ * Author:     Reion Wong <aj@lingmoos.com>
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
 import QtQuick 2.12
 import QtQuick.Layouts 1.12
 import QtQuick.Controls 2.12
 import QtQuick.Window 2.12
 
-import Cute.System 1.0 as System
-import Cute.StatusBar 1.0
-import Cute.NetworkManagement 1.0 as NM
-import CuteUI 1.0 as CuteUI
+import Lingmo.System 1.0 as System
+import Lingmo.StatusBar 1.0
+import Lingmo.NetworkManagement 1.0 as NM
+import LingmoUI 1.0 as LingmoUI
 
 Item {
     id: rootItem
@@ -55,10 +74,10 @@ Item {
     Rectangle {
         id: background
         anchors.fill: parent
-        // opacity: 0.6
+        opacity: 0.3
 
-       color: CuteUI.Theme.darkMode ? "#4D4D4D" : "#FFFFFF"
-       opacity: windowHelper.compositing ? CuteUI.Theme.darkMode ? 0.5 : 0.7 : 1.0
+//        color: LingmoUI.Theme.darkMode ? "#4D4D4D" : "#FFFFFF"
+//        opacity: windowHelper.compositing ? LingmoUI.Theme.darkMode ? 0.5 : 0.7 : 1.0
 
 //        Behavior on color {
 //            ColorAnimation {
@@ -68,15 +87,15 @@ Item {
 //        }
     }
 
-    CuteUI.WindowHelper {
+    LingmoUI.WindowHelper {
         id: windowHelper
     }
 
-    CuteUI.PopupTips {
+    LingmoUI.PopupTips {
         id: popupTips
     }
 
-    CuteUI.DesktopMenu {
+    LingmoUI.DesktopMenu {
         id: acticityMenu
 
         MenuItem {
@@ -88,9 +107,9 @@ Item {
     // Main layout
     RowLayout {
         anchors.fill: parent
-        anchors.leftMargin: CuteUI.Units.smallSpacing
-        anchors.rightMargin: CuteUI.Units.smallSpacing
-        spacing: CuteUI.Units.smallSpacing / 2
+        anchors.leftMargin: LingmoUI.Units.smallSpacing
+        anchors.rightMargin: LingmoUI.Units.smallSpacing
+        spacing: LingmoUI.Units.smallSpacing / 2
 
         // App name
         StandardItem {
@@ -98,7 +117,7 @@ Item {
             animationEnabled: true
             Layout.fillHeight: true
             Layout.preferredWidth: Math.min(rootItem.width / 3,
-                                            acticityLayout.implicitWidth + CuteUI.Units.largeSpacing)
+                                            acticityLayout.implicitWidth + LingmoUI.Units.largeSpacing)
             onClicked: {
                 if (mouse.button === Qt.RightButton)
                     acticityMenu.open()
@@ -107,9 +126,9 @@ Item {
             RowLayout {
                 id: acticityLayout
                 anchors.fill: parent
-                anchors.leftMargin: CuteUI.Units.smallSpacing
-                anchors.rightMargin: CuteUI.Units.smallSpacing
-                spacing: CuteUI.Units.smallSpacing
+                anchors.leftMargin: LingmoUI.Units.smallSpacing
+                anchors.rightMargin: LingmoUI.Units.smallSpacing
+                spacing: LingmoUI.Units.smallSpacing
 
                 Image {
                     id: acticityIcon
@@ -146,7 +165,7 @@ Item {
                 id: appMenuView
                 anchors.fill: parent
                 orientation: Qt.Horizontal
-                spacing: CuteUI.Units.smallSpacing
+                spacing: LingmoUI.Units.smallSpacing
                 visible: appMenuModel.visible
                 interactive: false
                 clip: true
@@ -161,7 +180,7 @@ Item {
 
                 delegate: StandardItem {
                     id: _menuItem
-                    width: _actionText.width + CuteUI.Units.largeSpacing
+                    width: _actionText.width + LingmoUI.Units.largeSpacing
                     height: ListView.view.height
                     checked: appMenuApplet.currentIndex === index
 
@@ -230,9 +249,51 @@ Item {
                 }
             }
         }
+        StandardItem {
+            id: lyricsItem
+            visible: lyricsHelper.lyricsVisible
+            animationEnabled: true
+            Layout.fillHeight: true
+            Layout.preferredWidth: _lyricsLayout.implicitWidth + LingmoUI.Units.smallSpacing
 
+            RowLayout {
+                id: _lyricsLayout
+                anchors.fill: parent
+
+                Label {
+                    id: lyricsLabel
+                    Layout.alignment: Qt.AlignCenter
+                    font.pointSize: rootItem.fontSize
+                    color: rootItem.textColor
+                    text: lyricsHelper.lyrics
+                    }
+                }
+         }
         // System tray(Right)
         SystemTray {}
+
+        StandardItem {
+            id: permissionSurveillanceItem
+            visible: permissionSurveillance.permissionSurveillanceVisible
+            backcolor: "#ee7959"
+            backColorEnabled: true
+            checked: true
+            popupText: permissionSurveillance.cameraUser + " " + qsTr("is using the camera")
+            animationEnabled: true
+            Layout.fillHeight: true
+            Layout.preferredWidth: shutdownIcon.implicitWidth + LingmoUI.Units.smallSpacing + 4
+            Image {
+                id: permissionSurveillanceIcon
+                anchors.centerIn: parent
+                width: rootItem.iconSize
+                height: width
+                sourceSize: Qt.size(width, height)
+                source: "qrc:/images/dark/camera.svg"
+                asynchronous: true
+                antialiasing: true
+                smooth: false
+            }
+        }
 
         StandardItem {
             id: controler
@@ -240,7 +301,7 @@ Item {
             checked: controlCenter.item.visible
             animationEnabled: true
             Layout.fillHeight: true
-            Layout.preferredWidth: _controlerLayout.implicitWidth + CuteUI.Units.largeSpacing
+            Layout.preferredWidth: _controlerLayout.implicitWidth + LingmoUI.Units.largeSpacing
 
             onClicked: {
                 toggleDialog()
@@ -260,10 +321,10 @@ Item {
             RowLayout {
                 id: _controlerLayout
                 anchors.fill: parent
-                anchors.leftMargin: CuteUI.Units.smallSpacing
-                anchors.rightMargin: CuteUI.Units.smallSpacing
+                anchors.leftMargin: LingmoUI.Units.smallSpacing
+                anchors.rightMargin: LingmoUI.Units.smallSpacing
 
-                spacing: CuteUI.Units.largeSpacing
+                spacing: LingmoUI.Units.largeSpacing
 
                 Image {
                     id: volumeIcon
@@ -324,7 +385,7 @@ Item {
 
             animationEnabled: true
             Layout.fillHeight: true
-            Layout.preferredWidth: shutdownIcon.implicitWidth + CuteUI.Units.smallSpacing
+            Layout.preferredWidth: shutdownIcon.implicitWidth + LingmoUI.Units.smallSpacing
             checked: shutdownDialog.item.visible
 
             onClicked: {
@@ -352,26 +413,26 @@ Item {
 
             animationEnabled: true
             Layout.fillHeight: true
-            Layout.preferredWidth: _dateTimeLayout.implicitWidth + CuteUI.Units.smallSpacing
+            Layout.preferredWidth: _dateTimeLayout.implicitWidth + LingmoUI.Units.smallSpacing
 
             onClicked: {
-                process.startDetached("cute-notificationd", ["-s"])
+                process.startDetached("lingmo-notificationd", ["-s"])
             }
 
             RowLayout {
                 id: _dateTimeLayout
                 anchors.fill: parent
 
-//                Image {
-//                    width: rootItem.iconSize
-//                    height: width
-//                    sourceSize: Qt.size(width, height)
-//                    source: "qrc:/images/" + (rootItem.darkMode ? "dark/" : "light/") + "notification-symbolic.svg"
-//                    asynchronous: true
-//                    Layout.alignment: Qt.AlignCenter
-//                    antialiasing: true
-//                    smooth: false
-//                }
+               Image {
+                   width: rootItem.iconSize
+                   height: width
+                   sourceSize: Qt.size(width, height)
+                   source: "qrc:/images/" + (rootItem.darkMode ? "dark/" : "light/") + "notification-symbolic.svg"
+                   asynchronous: true
+                   Layout.alignment: Qt.AlignCenter
+                   antialiasing: true
+                   smooth: false
+               }
 
                 Label {
                     id: timeLabel
@@ -392,6 +453,55 @@ Item {
                     }
                 }
             }
+        }
+
+        StandardItem {
+            id: progressItem
+            backcolor: "#93b5cf"
+            backColorEnabled: true
+            visible: capsuleHelper.progressVisible
+            animationEnabled: true
+            Layout.fillHeight: true
+            Layout.preferredWidth: _progressLayout.implicitWidth + LingmoUI.Units.smallSpacing
+
+            RowLayout {
+                id: _progressLayout
+                anchors.fill: parent
+
+                ProgressBar {
+                        id: progressbar
+                        from: 0
+                        to: 100
+                        value: capsuleHelper.progressValue
+                        width: 100
+
+                        anchors.centerIn: parent
+                        background: Rectangle {
+                            implicitWidth: progressbar.width
+                            implicitHeight: progressbar.height
+                            color: "transparent"
+                        }
+
+                        contentItem: Item {
+                            Rectangle {
+                                width: progressbar.visualPosition * progressbar.width
+                                height: progressbar.height
+                                color: "#5698c3"
+                            }
+                        }
+                    }
+                    Image {
+                        id: progressIcon
+                        anchors.centerIn: parent
+                        width: rootItem.iconSize
+                        height: width
+                        sourceSize: Qt.size(width, height)
+                        source: capsuleHelper.progressIcon
+                        asynchronous: true
+                        antialiasing: true
+                        smooth: false
+                    }
+                }
         }
 
     }

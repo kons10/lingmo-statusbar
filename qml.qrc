@@ -111,6 +111,7 @@
         <file>images/dark/notification-new-symbolic.svg</file>
         <file>images/dark/notification-symbolic.svg</file>
         <file>images/logo.svg</file>
+        <file>images/logo.png</file>
         <file>qml/ShutdownDialog.qml</file>
         <file>images/light/system-lock-screen.svg</file>
         <file>images/light/system-log-out.svg</file>
@@ -127,5 +128,6 @@
         <file>images/dark/screenshot.svg</file>
         <file>images/light/do-not-disturb.svg</file>
         <file>images/dark/do-not-disturb.svg</file>
+        <file>images/dark/camera.svg</file>
     </qresource>
 </RCC>

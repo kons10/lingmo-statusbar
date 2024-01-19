@@ -19,17 +19,17 @@
         <location filename="../qml/ControlCenter.qml" line="203"/>
         <location filename="../qml/ControlCenter.qml" line="214"/>
         <source>Off</source>
-        <translation>Söndür</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/ControlCenter.qml" line="202"/>
         <source>Bluetooth</source>
-        <translation>Bluetooth</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/ControlCenter.qml" line="213"/>
         <source>Dark Mode</source>
-        <translation>Qaranlıq rejim</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -37,7 +37,7 @@
     <message>
         <location filename="../qml/main.qml" line="71"/>
         <source>Close</source>
-        <translation>Bağla</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 </TS>

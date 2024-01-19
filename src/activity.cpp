@@ -1,3 +1,22 @@
+/*
+ * Copyright (C) 2021 LingmoOS Team.
+ *
+ * Author:     lingmoos <lingmo@lingmo.org>
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
 #include "activity.h"
 
 #include <QFile>
@@ -11,8 +30,8 @@
 #include <NETWM>
 #include <KWindowSystem>
 
-static const QStringList blockList = {"cute-launcher",
-                                      "cute-statusbar"};
+static const QStringList blockList = {"lingmo-launcher",
+                                      "lingmo-statusbar"};
 
 Activity::Activity(QObject *parent)
     : QObject(parent)
@@ -140,12 +159,12 @@ void Activity::onActiveWindowChanged()
                      NET::WMState | NET::WMVisibleName | NET::WMWindowType,
                      NET::WM2WindowClass);
 
-    m_launchPad = (info.windowClassClass() == "cute-launcher");
+    m_launchPad = (info.windowClassClass() == "lingmo-launcher");
     emit launchPadChanged();
 
     if (NET::typeMatchesMask(info.windowType(NET::AllTypesMask), NET::DesktopMask)) {
-        m_title = tr("Lingmo Desktop");
-        m_icon = "lingmo-desktop";
+        m_title = tr("");
+        m_icon = "sysytemlogo";
 
         emit titleChanged();
         emit iconChanged();

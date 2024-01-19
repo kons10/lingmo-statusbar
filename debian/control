@@ -1,7 +1,7 @@
-Source: cute-statusbar
+Source: lingmo-statusbar
 Section: devel
 Priority: optional
-Maintainer: LingmoOS <support@cuteos.com>
+Maintainer: LingmoOS <lingmo@lingmo.org>
 Build-Depends: cmake,
                debhelper (>= 9),
                extra-cmake-modules,
@@ -13,10 +13,10 @@ Build-Depends: cmake,
                qttools5-dev,
                qttools5-dev-tools,
                pkg-config
-Standards-Version: 1.0.0
-Homepage: https://lingmo.org
+Standards-Version: 4.5.0
+Homepage: https://lingmoos.com
 
-Package: cute-statusbar
+Package: lingmo-statusbar
 Architecture: any
 Depends: qml-module-qtquick-controls2,
          qml-module-qtquick2,

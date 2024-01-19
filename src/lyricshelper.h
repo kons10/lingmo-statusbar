@@ -17,34 +17,41 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef BACKGROUNDHELPER_H
-#define BACKGROUNDHELPER_H
+#ifndef LYRICSHELPER_H
+#define LYRICSHELPER_H
 
 #include <QObject>
-#include <QColor>
+#include <QDBusConnection>
+#include <QDBusMessage>
+#include <QTimer>
 
-class BackgroundHelper : public QObject
+class LyricsHelper : public QObject
 {
     Q_OBJECT
+    Q_CLASSINFO("D-Bus Interface", "com.lingmo.Statusbar")
+    Q_PROPERTY(QString lyrics READ getLyrics NOTIFY lyricsChanged)
+    Q_PROPERTY(bool lyricsVisible READ getLyricsVisible NOTIFY lyricsVisibleChanged)
 
 public:
-    explicit BackgroundHelper(QObject *parent = nullptr);
+    explicit LyricsHelper(QObject *parent = nullptr);
+    QString getLyrics();
+    bool getLyricsVisible();
 
-    Q_INVOKABLE void setColor(QColor c);
-    Q_INVOKABLE void setBackgound(const QString &fileName);
+public slots:
+    void sendLyrics(QString text);
 
 private slots:
-    void onPrimaryScreenChanged();
-    void onChanged();
-
-signals:
-    void newColor(QColor color, bool darkMode);
+    void onLyricsVisibleChanged();
 
 private:
-    int m_statusBarHeight;
-    int m_type;
-    QColor m_color;
-    QString m_wallpaper;
+    QTimer *Timer=new QTimer;
+    QString m_Lyrics;
+    bool m_LyricsVisible;
+
+signals:
+    void lyricsChanged();
+    void lyricsVisibleChanged();
+
 };
 
-#endif // BACKGROUNDHELPER_H
+#endif // LYRICSHELPER_H

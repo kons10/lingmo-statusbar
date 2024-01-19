@@ -1,5 +1,6 @@
-cute-statusbar (1.0.0.0) UNRELEASED; urgency=high
+lingmo-statusbar (1.9.9) unstable; urgency=high
 
-  * Initial release (LingmoOS)  <support@cuteos.com>
+  * Release 1.9.9
 
- -- CuteOS Packaging Team <support@cuteos.com>  Wed, 19 Jul 2023 06:05:47 +0800
+ -- Lingmo OS Team <lingmo@lingmo.org>  Fri, 15 Dec 2023 22:36:35 +0800
+

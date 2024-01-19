@@ -1,8 +1,27 @@
+/*
+ * Copyright (C) 2021 LingmoOS Team.
+ *
+ * Author:     Reion Wong <aj@lingmoos.com>
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
 import QtQuick 2.12
 import QtQuick.Controls 2.12
 import QtQuick.Layouts 1.12
 import QtGraphicalEffects 1.0
-import CuteUI 1.0 as CuteUI
+import LingmoUI 1.0 as LingmoUI
 
 Item {
     id: control
@@ -14,17 +33,17 @@ Item {
     signal clicked
     signal pressAndHold
 
-    property var backgroundColor: CuteUI.Theme.darkMode ? Qt.rgba(255, 255, 255, 0.1)
+    property var backgroundColor: LingmoUI.Theme.darkMode ? Qt.rgba(255, 255, 255, 0.1)
                                                         : Qt.rgba(0, 0, 0, 0.05)
-    property var hoverColor: CuteUI.Theme.darkMode ? Qt.rgba(255, 255, 255, 0.15)
+    property var hoverColor: LingmoUI.Theme.darkMode ? Qt.rgba(255, 255, 255, 0.15)
                                                    : Qt.rgba(0, 0, 0, 0.1)
-    property var pressedColor: CuteUI.Theme.darkMode ? Qt.rgba(255, 255, 255, 0.2)
+    property var pressedColor: LingmoUI.Theme.darkMode ? Qt.rgba(255, 255, 255, 0.2)
                                                      : Qt.rgba(0, 0, 0, 0.15)
 
-    property var highlightHoverColor: CuteUI.Theme.darkMode ? Qt.lighter(CuteUI.Theme.highlightColor, 1.1)
-                                                            : Qt.darker(CuteUI.Theme.highlightColor, 1.1)
-    property var highlightPressedColor: CuteUI.Theme.darkMode ? Qt.lighter(CuteUI.Theme.highlightColor, 1.1)
-                                                              : Qt.darker(CuteUI.Theme.highlightColor, 1.2)
+    property var highlightHoverColor: LingmoUI.Theme.darkMode ? Qt.lighter(LingmoUI.Theme.highlightColor, 1.1)
+                                                            : Qt.darker(LingmoUI.Theme.highlightColor, 1.1)
+    property var highlightPressedColor: LingmoUI.Theme.darkMode ? Qt.lighter(LingmoUI.Theme.highlightColor, 1.1)
+                                                              : Qt.darker(LingmoUI.Theme.highlightColor, 1.2)
 
     MouseArea {
         id: _mouseArea
@@ -44,9 +63,9 @@ Item {
 
     ColumnLayout {
         anchors.fill: parent
-        anchors.leftMargin: CuteUI.Theme.smallRadius
-        anchors.rightMargin: CuteUI.Theme.smallRadius
-        spacing: CuteUI.Units.largeSpacing
+        anchors.leftMargin: LingmoUI.Theme.smallRadius
+        anchors.rightMargin: LingmoUI.Theme.smallRadius
+        spacing: LingmoUI.Units.largeSpacing
 
         Item {
             Layout.fillHeight: true
@@ -54,8 +73,8 @@ Item {
 
         Item {
             id: imageItem
-            Layout.preferredWidth: 28 + CuteUI.Units.largeSpacing * 2
-            Layout.preferredHeight: 28 + CuteUI.Units.largeSpacing * 2
+            Layout.preferredWidth: 28 + LingmoUI.Units.largeSpacing * 2
+            Layout.preferredHeight: 28 + LingmoUI.Units.largeSpacing * 2
 
             Layout.alignment: Qt.AlignHCenter
 
@@ -78,7 +97,7 @@ Item {
                         else if (_mouseArea.containsMouse)
                             return highlightHoverColor
                         else
-                            return CuteUI.Theme.highlightColor
+                            return LingmoUI.Theme.highlightColor
                     } else {
                         if (_mouseArea.pressed)
                             return pressedColor
@@ -104,7 +123,7 @@ Item {
 
         Label {
             id: _titleLabel
-//            color: control.checked ? CuteUI.Theme.highlightedTextColor : CuteUI.Theme.textColor
+//            color: control.checked ? LingmoUI.Theme.highlightedTextColor : LingmoUI.Theme.textColor
             Layout.preferredHeight: control.height * 0.15
             Layout.alignment: Qt.AlignHCenter
             horizontalAlignment: Qt.AlignHCenter

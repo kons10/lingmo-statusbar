@@ -1,7 +1,7 @@
 /*
- * Copyright (C) 2021 CuteOS Team.
+ * Copyright (C) 2021 LingmoOS Team.
  *
- * Author:     Reion Wong <aj@cuteos.com>
+ * Author:     Reion Wong <aj@lingmoos.com>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -22,8 +22,8 @@ import QtQuick.Controls 2.12
 import QtQuick.Layouts 1.12
 import QtGraphicalEffects 1.0
 
-import CuteUI 1.0 as CuteUI
-import Cute.StatusBar 1.0
+import LingmoUI 1.0 as LingmoUI
+import Lingmo.StatusBar 1.0
 
 Item {
     id: control
@@ -35,7 +35,8 @@ Item {
 
     property bool checked: false
     property bool animationEnabled: false
-
+    property bool backColorEnabled: false
+    property color backcolor: "transparent"
     property alias mouseArea: _mouseArea
 
     signal clicked(var mouse)
@@ -101,7 +102,7 @@ Item {
             if (containsMouse && control.popupText !== "") {
                 popupTips.popupText = control.popupText
                 popupTips.position = Qt.point(control.mapToGlobal(0, 0).x + (control.width / 2 - popupTips.width / 2),
-                                              control.height + CuteUI.Units.smallSpacing)
+                                              control.height + LingmoUI.Units.smallSpacing)
                 popupTips.show()
             } else {
                 popupTips.hide()
@@ -115,7 +116,7 @@ Item {
 
     Rectangle {
         id: _bgRect
-        radius: CuteUI.Theme.smallRadius
+        radius: LingmoUI.Theme.smallRadius
 
         state: "hidden"
         states: [
@@ -185,6 +186,10 @@ Item {
         ]
 
         color: {
+            if (backColorEnabled)
+            {
+                return backcolor
+            }
             if (control.checked) {
                 return (rootItem.darkMode) ? Qt.rgba(255, 255, 255, 0.2) : Qt.rgba(0, 0, 0, 0.1)
             }

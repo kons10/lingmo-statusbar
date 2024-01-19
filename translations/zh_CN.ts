@@ -5,8 +5,8 @@
     <name>Activity</name>
     <message>
         <location filename="../src/activity.cpp" line="166"/>
-        <source>Lingmo Desktop</source>
-        <translation>灵墨桌面</translation>
+        <source>Desktop</source>
+        <translation>桌面</translation>
     </message>
 </context>
 <context>
@@ -76,6 +76,11 @@
         <location filename="../qml/main.qml" line="73"/>
         <source>Close</source>
         <translation>关闭</translation>
+    </message>
+    <message>
+        <location filename="../qml/main.qml" line="281"/>
+        <source>is using the camera</source>
+        <translation>正在使用相机</translation>
     </message>
 </context>
 </TS>

@@ -1,7 +1,7 @@
 /*
- * Copyright (C) 2021 CuteOS Team.
+ * Copyright (C) 2021 LingmoOS Team.
  *
- * Author:     cuteos <cuteos@foxmail.com>
+ * Author:     lingmoos <lingmo@lingmo.org>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -23,9 +23,9 @@
 Brightness::Brightness(QObject *parent)
     : QObject(parent)
     , m_dbusConnection(QDBusConnection::sessionBus())
-    , m_iface("com.cute.Settings",
+    , m_iface("com.lingmo.Settings",
               "/Brightness",
-              "com.cute.Brightness", m_dbusConnection)
+              "com.lingmo.Brightness", m_dbusConnection)
     , m_value(0)
     , m_enabled(false)
 {

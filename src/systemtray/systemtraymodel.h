@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2021 Reion Wong     <aj@cuteos.com>                 *
+ *   Copyright (C) 2021 Reion Wong     <aj@lingmoos.com>                 *
  *   Copyright (C) 2020 Konrad Materka <materka@gmail.com>                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *

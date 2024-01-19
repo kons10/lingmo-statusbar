@@ -1,5 +1,5 @@
 /******************************************************************
- * Copyright 2021 Reion Wong <aj@cuteos.com>
+ * Copyright 2021 Reion Wong <aj@lingmoos.com>
  * Copyright 2016 Kai Uwe Broulik <kde@privat.broulik.de>
  * Copyright 2016 Chinmoy Ranjan Pradhan <chinmoyrp65@gmail.com>
  *

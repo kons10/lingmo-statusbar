@@ -1,7 +1,7 @@
 /*
- * Copyright (C) 2021 CuteOS Team.
+ * Copyright (C) 2021 LingmoOS Team.
  *
- * Author:     cuteos <cuteos@foxmail.com>
+ * Author:     lingmoos <lingmo@lingmo.org>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -25,9 +25,9 @@
 #include <QDBusServiceWatcher>
 #include <QDBusPendingCall>
 
-static const QString Service = "com.cute.Settings";
+static const QString Service = "com.lingmo.Settings";
 static const QString ObjectPath = "/Audio";
-static const QString Interface = "com.cute.Audio";
+static const QString Interface = "com.lingmo.Audio";
 
 static VolumeManager *SELF = nullptr;
 

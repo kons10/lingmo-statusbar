@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2021 CuteOS Team.
+ * Copyright (C) 2021 LingmoOS Team.
  *
  * Author:     revenmartin <revenmartin@gmail.com>
  *
@@ -23,9 +23,9 @@
 #include <QApplication>
 #include <QProcess>
 
-const static QString s_dbusName = "com.cute.Session";
+const static QString s_dbusName = "com.lingmo.Session";
 const static QString s_pathName = "/Session";
-const static QString s_interfaceName = "com.cute.Session";
+const static QString s_interfaceName = "com.lingmo.Session";
 
 PowerActions::PowerActions(QObject *parent)
     : QObject(parent)
@@ -59,7 +59,7 @@ void PowerActions::reboot()
 
 void PowerActions::lockScreen()
 {
-    QProcess::startDetached("cute-screenlocker", QStringList());
+    QProcess::startDetached("lingmo-screenlocker", QStringList());
 }
 
 void PowerActions::suspend()

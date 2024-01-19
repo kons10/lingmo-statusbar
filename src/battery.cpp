@@ -1,7 +1,7 @@
 /*
- * Copyright (C) 2021 CuteOS Team.
+ * Copyright (C) 2021 LingmoOS Team.
  *
- * Author:     cuteos <cuteos@foxmail.com>
+ * Author:     lingmoos <lingmo@lingmo.org>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -21,9 +21,9 @@
 #include <QSettings>
 #include <QDBusPendingCall>
 
-static const QString s_sServer = "com.cute.Settings";
+static const QString s_sServer = "com.lingmo.Settings";
 static const QString s_sPath = "/PrimaryBattery";
-static const QString s_sInterface = "com.cute.PrimaryBattery";
+static const QString s_sInterface = "com.lingmo.PrimaryBattery";
 
 static Battery *SELF = nullptr;
 
@@ -41,9 +41,9 @@ Battery::Battery(QObject *parent)
                         "/org/freedesktop/UPower",
                         "org.freedesktop.UPower",
                         QDBusConnection::systemBus())
-    , m_interface("com.cute.Settings",
+    , m_interface("com.lingmo.Settings",
                   "/PrimaryBattery",
-                  "com.cute.PrimaryBattery",
+                  "com.lingmo.PrimaryBattery",
                   QDBusConnection::sessionBus())
     , m_available(false)
     , m_onBattery(false)
@@ -52,7 +52,7 @@ Battery::Battery(QObject *parent)
     m_available = m_interface.isValid() && !m_interface.lastError().isValid();
 
     if (m_available) {
-        QSettings settings("cuteos", "statusbar");
+        QSettings settings("lingmoos", "statusbar");
         settings.setDefaultFormat(QSettings::IniFormat);
         m_showPercentage = settings.value("BatteryPercentage", false).toBool();
 
@@ -103,7 +103,7 @@ void Battery::setShowPercentage(bool enabled)
 
     m_showPercentage = enabled;
 
-    QSettings settings("cuteos", "statusbar");
+    QSettings settings("lingmoos", "statusbar");
     settings.setDefaultFormat(QSettings::IniFormat);
     settings.setValue("BatteryPercentage", m_showPercentage);
 

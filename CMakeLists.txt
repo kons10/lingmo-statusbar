@@ -29,6 +29,8 @@ set(SRCS
     src/capplications.cpp
     src/notifications.cpp
     src/backgroundhelper.cpp
+    src/lyricshelper.cpp
+    src/permissionsurveillance.cpp
 
     src/systemtray/statusnotifieritemsource.cpp
     src/systemtray/systemtraytypes.cpp
@@ -91,18 +93,18 @@ set_source_files_properties(src/libdbusmenuqt/com.canonical.dbusmenu.xml PROPERT
 ## appmenu
 qt5_add_dbus_adaptor(appmenu_SRCS src/appmenu/com.canonical.AppMenu.Registrar.xml
     src/appmenu/menuimporter.h MenuImporter menuimporteradaptor MenuImporterAdaptor)
-qt5_add_dbus_adaptor(appmenu_SRCS src/appmenu/com.cute.cappmenu.xml
+qt5_add_dbus_adaptor(appmenu_SRCS src/appmenu/com.lingmo.cappmenu.xml
     src/appmenu/appmenudbus.h AppmenuDBus appmenuadaptor AppmenuAdaptor)
 
 ## statusbar dbus
 qt5_add_dbus_adaptor(DBUS_SOURCES
-                     src/com.cute.Statusbar.xml
+                     src/com.lingmo.Statusbar.xml
                      src/statusbar.h StatusBar)
 
-add_executable(cute-statusbar ${SRCS} ${appmenu_SRCS} ${DBUS_SOURCES})
+add_executable(lingmo-statusbar ${SRCS} ${appmenu_SRCS} ${DBUS_SOURCES})
 
-target_include_directories(cute-statusbar PUBLIC ${XCB_LIBS_INCLUDE_DIRS})
-target_link_libraries(cute-statusbar
+target_include_directories(lingmo-statusbar PUBLIC ${XCB_LIBS_INCLUDE_DIRS})
+target_link_libraries(lingmo-statusbar
   PRIVATE
   Qt5::Core
   Qt5::Widgets
@@ -118,7 +120,7 @@ target_link_libraries(cute-statusbar
 file(GLOB TS_FILES translations/*.ts)
 qt5_create_translation(QM_FILES ${TS_FILES})
 add_custom_target(translations DEPENDS ${QM_FILES} SOURCES ${TS_FILES})
-add_dependencies(cute-statusbar translations)
+add_dependencies(lingmo-statusbar translations)
 
-install(TARGETS cute-statusbar RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR})
-install(FILES ${QM_FILES} DESTINATION /usr/share/cute-statusbar/translations)
+install(TARGETS lingmo-statusbar RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR})
+install(FILES ${QM_FILES} DESTINATION /usr/share/lingmo-statusbar/translations)
