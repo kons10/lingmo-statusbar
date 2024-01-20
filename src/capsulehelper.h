@@ -19,6 +19,7 @@ public:
     int getProgressValue();
     QString getProgressIcon();
     bool getProgressVisible();
+    bool m_CapsuleVisible;
 
 public slots:
     void sendCapsule(QString text);

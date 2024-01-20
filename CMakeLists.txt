@@ -25,6 +25,7 @@ set(SRCS
     src/battery.cpp
     src/appearance.cpp
     src/processprovider.cpp
+    src/capsulehelper.cpp
     src/activity.cpp
     src/capplications.cpp
     src/notifications.cpp
