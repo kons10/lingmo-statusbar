@@ -1,6 +1,6 @@
 /***************************************************************************
  *                                                                         *
- *   Copyright (C) 2021 Reion Wong <aj@lingmoos.com>                     *
+ *   Copyright (C) 2024 Reion Wong <aj@lingmo.org>                     *
  *   Copyright (C) 2009 Marco Martin <notmart@gmail.com>                   *
  *   Copyright (C) 2009 Matthieu Gallien <matthieu_gallien@yahoo.fr>       *
  *                                                                         *

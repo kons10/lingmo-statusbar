@@ -1,4 +1,4 @@
-# Lingmo OS StatusBar
+# StatusBar
 
 The status bar at the top displays the current status of the system, such as time, system tray, etc.
 

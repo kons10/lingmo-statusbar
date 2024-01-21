@@ -1,7 +1,7 @@
 /*
- * Copyright (C) 2021 LingmoOS Team.
+ * Copyright (C) 2024 LingmoOS Team.
  *
- * Author:     Reion Wong <aj@lingmoos.com>
+ * Author:     Reion Wong <aj@lingmo.org>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -423,16 +423,16 @@ Item {
                 id: _dateTimeLayout
                 anchors.fill: parent
 
-               Image {
-                   width: rootItem.iconSize
-                   height: width
-                   sourceSize: Qt.size(width, height)
-                   source: "qrc:/images/" + (rootItem.darkMode ? "dark/" : "light/") + "notification-symbolic.svg"
-                   asynchronous: true
-                   Layout.alignment: Qt.AlignCenter
-                   antialiasing: true
-                   smooth: false
-               }
+//                Image {
+//                    width: rootItem.iconSize
+//                    height: width
+//                    sourceSize: Qt.size(width, height)
+//                    source: "qrc:/images/" + (rootItem.darkMode ? "dark/" : "light/") + "notification-symbolic.svg"
+//                    asynchronous: true
+//                    Layout.alignment: Qt.AlignCenter
+//                    antialiasing: true
+//                    smooth: false
+//                }
 
                 Label {
                     id: timeLabel
@@ -453,55 +453,6 @@ Item {
                     }
                 }
             }
-        }
-
-        StandardItem {
-            id: progressItem
-            backcolor: "#93b5cf"
-            backColorEnabled: true
-            visible: capsuleHelper.progressVisible
-            animationEnabled: true
-            Layout.fillHeight: true
-            Layout.preferredWidth: _progressLayout.implicitWidth + LingmoUI.Units.smallSpacing
-
-            RowLayout {
-                id: _progressLayout
-                anchors.fill: parent
-
-                ProgressBar {
-                        id: progressbar
-                        from: 0
-                        to: 100
-                        value: capsuleHelper.progressValue
-                        width: 100
-
-                        anchors.centerIn: parent
-                        background: Rectangle {
-                            implicitWidth: progressbar.width
-                            implicitHeight: progressbar.height
-                            color: "transparent"
-                        }
-
-                        contentItem: Item {
-                            Rectangle {
-                                width: progressbar.visualPosition * progressbar.width
-                                height: progressbar.height
-                                color: "#5698c3"
-                            }
-                        }
-                    }
-                    Image {
-                        id: progressIcon
-                        anchors.centerIn: parent
-                        width: rootItem.iconSize
-                        height: width
-                        sourceSize: Qt.size(width, height)
-                        source: capsuleHelper.progressIcon
-                        asynchronous: true
-                        antialiasing: true
-                        smooth: false
-                    }
-                }
         }
 
     }

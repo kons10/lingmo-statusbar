@@ -1,7 +1,7 @@
 /*
- * Copyright (C) 2021 LingmoOS Team.
+ * Copyright (C) 2024 LingmoOS Team.
  *
- * Author:     lingmoos <lingmo@lingmo.org>
+ * Author:     lingmoos <lingmoos@foxmail.com>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -23,7 +23,6 @@
 #include "appmenu/appmenu.h"
 #include "statusbaradaptor.h"
 #include "lyricshelper.h"
-#include "capsulehelper.h"
 #include "permissionsurveillance.h"
 #include <QQmlEngine>
 #include <QQmlContext>
@@ -57,7 +56,6 @@ StatusBar::StatusBar(QQuickView *parent)
     engine()->rootContext()->setContextProperty("acticity", m_acticity);
     engine()->rootContext()->setContextProperty("process", new ProcessProvider);
     engine()->rootContext()->setContextProperty("lyricsHelper", new LyricsHelper);
-    engine()->rootContext()->setContextProperty("capsuleHelper", new CapsuleHelper);
     engine()->rootContext()->setContextProperty("permissionSurveillance", new PermissionSurveillance);
     engine()->rootContext()->setContextProperty("battery", Battery::self());
 

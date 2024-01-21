@@ -1,7 +1,7 @@
 Source: lingmo-statusbar
 Section: devel
 Priority: optional
-Maintainer: LingmoOS <lingmo@lingmo.org>
+Maintainer: LingmoOS <support@lingmo.org>
 Build-Depends: cmake,
                debhelper (>= 9),
                extra-cmake-modules,
@@ -14,7 +14,7 @@ Build-Depends: cmake,
                qttools5-dev-tools,
                pkg-config
 Standards-Version: 4.5.0
-Homepage: https://lingmoos.com
+Homepage: https://lingmo.org
 
 Package: lingmo-statusbar
 Architecture: any

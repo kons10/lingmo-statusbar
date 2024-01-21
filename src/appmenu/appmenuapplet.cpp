@@ -1,5 +1,5 @@
 /*
- * Copyright 2021 Reion Wong <aj@lingmoos.com>
+ * Copyright 2024 Reion Wong <aj@lingmo.org>
  * Copyright 2016 Kai Uwe Broulik <kde@privat.broulik.de>
  *
  * This program is free software; you can redistribute it and/or

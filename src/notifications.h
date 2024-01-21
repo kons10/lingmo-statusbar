@@ -1,7 +1,7 @@
 /*
- * Copyright (C) 2021 - 2022 LingmoOS Team.
+ * Copyright (C) 2024 - 2022 LingmoOS Team.
  *
- * Author:     Reion Wong <reion@lingmoos.com>
+ * Author:     Reion Wong <reion@lingmo.org>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
