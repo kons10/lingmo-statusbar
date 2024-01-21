@@ -19,7 +19,7 @@ jobs:
     - name: Install the basic dev packages
       run: apt-get install -y equivs curl git devscripts lintian build-essential automake autotools-dev cmake g++
     - name: Install build dependencies
-      run: apt build-dep ./
+      run: apt build-dep ./ -y
     - name: Build Package
       run: debuild -us -uc -b -j$(nproc)
 
