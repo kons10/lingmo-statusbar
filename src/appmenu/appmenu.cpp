@@ -35,7 +35,7 @@
 #include <QMenu>
 
 // X11
-#include <QX11Info>
+#include <QtGui/private/qtx11extras_p.h>
 #include <xcb/xcb.h>
 
 static const QByteArray s_x11AppMenuServiceNamePropertyName = QByteArrayLiteral("_KDE_NET_WM_APPMENU_SERVICE_NAME");

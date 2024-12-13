@@ -8,11 +8,12 @@ set(CMAKE_AUTOUIC ON)
 set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTORCC ON)
 
-set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-find_package(Qt5 CONFIG REQUIRED Widgets DBus X11Extras Concurrent LinguistTools QuickControls2)
-find_package(KF5WindowSystem REQUIRED)
+find_package(Qt6 CONFIG REQUIRED Widgets DBus Gui Concurrent LinguistTools QuickControls2)
+find_package(LingmoUI3 REQUIRED)
+find_package(KF6WindowSystem REQUIRED)
 find_package(PkgConfig REQUIRED)
 
 pkg_check_modules(XCB_LIBS REQUIRED xcb)
@@ -66,8 +67,8 @@ set(SRCS
 )
 
 set(statusnotifierwatcher_xml src/systemtray/org.kde.StatusNotifierWatcher.xml)
-qt5_add_dbus_interface(SRCS ${statusnotifierwatcher_xml} statusnotifierwatcher_interface)
-qt5_add_dbus_interface(SRCS src/systemtray/org.freedesktop.DBus.Properties.xml dbusproperties)
+qt6_add_dbus_interface(SRCS ${statusnotifierwatcher_xml} statusnotifierwatcher_interface)
+qt6_add_dbus_interface(SRCS src/systemtray/org.freedesktop.DBus.Properties.xml dbusproperties)
 
 set(statusnotifieritem_xml src/systemtray/org.kde.StatusNotifierItem.xml)
 set_source_files_properties(${statusnotifieritem_xml} PROPERTIES
@@ -75,9 +76,9 @@ set_source_files_properties(${statusnotifieritem_xml} PROPERTIES
    INCLUDE "src/systemtray/systemtraytypes.h"
    CLASSNAME OrgKdeStatusNotifierItem
 )
-qt5_add_dbus_interface(SRCS ${statusnotifieritem_xml} statusnotifieritem_interface)
+qt6_add_dbus_interface(SRCS ${statusnotifieritem_xml} statusnotifieritem_interface)
 
-qt5_add_dbus_adaptor(SRCS src/systemtray/org.kde.StatusNotifierWatcher.xml
+qt6_add_dbus_adaptor(SRCS src/systemtray/org.kde.StatusNotifierWatcher.xml
                      src/systemtray/statusnotifierwatcher.h StatusNotifierWatcher)
 
 # libdbusmenuqt
@@ -87,17 +88,17 @@ set_source_files_properties(src/libdbusmenuqt/com.canonical.dbusmenu.xml PROPERT
    CLASSNAME DBusMenuInterface
 )
 
-# The interface was added on Qt5.15
+# The interface was added on Qt6.15
 # qt_add_dbus_interface(libdbusmenu_SRCS src/libdbusmenuqt/com.canonical.dbusmenu.xml dbusmenu_interface)
 
 ## appmenu
-qt5_add_dbus_adaptor(appmenu_SRCS src/appmenu/com.canonical.AppMenu.Registrar.xml
+qt6_add_dbus_adaptor(appmenu_SRCS src/appmenu/com.canonical.AppMenu.Registrar.xml
     src/appmenu/menuimporter.h MenuImporter menuimporteradaptor MenuImporterAdaptor)
-qt5_add_dbus_adaptor(appmenu_SRCS src/appmenu/com.lingmo.cappmenu.xml
+qt6_add_dbus_adaptor(appmenu_SRCS src/appmenu/com.lingmo.cappmenu.xml
     src/appmenu/appmenudbus.h AppmenuDBus appmenuadaptor AppmenuAdaptor)
 
 ## statusbar dbus
-qt5_add_dbus_adaptor(DBUS_SOURCES
+qt6_add_dbus_adaptor(DBUS_SOURCES
                      src/com.lingmo.Statusbar.xml
                      src/statusbar.h StatusBar)
 
@@ -106,14 +107,15 @@ add_executable(lingmo-statusbar ${SRCS} ${appmenu_SRCS} ${DBUS_SOURCES})
 target_include_directories(lingmo-statusbar PUBLIC ${XCB_LIBS_INCLUDE_DIRS})
 target_link_libraries(lingmo-statusbar
   PRIVATE
-  Qt5::Core
-  Qt5::Widgets
-  Qt5::Quick
-  Qt5::QuickControls2
-  Qt5::X11Extras
-  Qt5::Concurrent
-  Qt5::DBus
-  KF5::WindowSystem
+  Qt6::Core
+  Qt6::Widgets
+  Qt6::Quick
+  Qt6::QuickControls2
+  Qt6::GuiPrivate
+  Qt6::Concurrent
+  Qt6::DBus
+  KF6::WindowSystem
+  LingmoUI3
   ${XCB_LIBS_LIBRARIES}
 )
 
@@ -122,7 +124,7 @@ foreach(filepath ${TS_FILES})
     string(REPLACE "${CMAKE_CURRENT_SOURCE_DIR}/" "" filename ${filepath})
     list(APPEND ts_files_replaced ${filename})
 endforeach()
-qt5_create_translation(QM_FILES ${CMAKE_CURRENT_SOURCE_DIR} ${ts_files_replaced})
+Qt6_create_translation(QM_FILES ${CMAKE_CURRENT_SOURCE_DIR} ${ts_files_replaced})
 
 add_custom_target(translations ALL DEPENDS ${QM_FILES} SOURCES ${ts_files_replaced})
 

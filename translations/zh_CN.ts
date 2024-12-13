@@ -4,9 +4,8 @@
 <context>
     <name>Activity</name>
     <message>
-        <location filename="../src/activity.cpp" line="166"/>
         <source>Desktop</source>
-        <translation>桌面</translation>
+        <translation type="vanished">桌面</translation>
     </message>
 </context>
 <context>
@@ -73,7 +72,7 @@
 <context>
     <name>main</name>
     <message>
-        <location filename="../qml/main.qml" line="73"/>
+        <location filename="../qml/main.qml" line="102"/>
         <source>Close</source>
         <translation>关闭</translation>
     </message>

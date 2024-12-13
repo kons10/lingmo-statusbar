@@ -2,14 +2,6 @@
 <!DOCTYPE TS>
 <TS version="2.1">
 <context>
-    <name>Activity</name>
-    <message>
-        <location filename="../src/activity.cpp" line="166"/>
-        <source>Desktop</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
     <name>ControlCenter</name>
     <message>
         <location filename="../qml/ControlCenter.qml" line="244"/>
@@ -73,8 +65,13 @@
 <context>
     <name>main</name>
     <message>
-        <location filename="../qml/main.qml" line="73"/>
+        <location filename="../qml/main.qml" line="102"/>
         <source>Close</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/main.qml" line="281"/>
+        <source>is using the camera</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
