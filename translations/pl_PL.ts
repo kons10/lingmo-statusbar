@@ -73,12 +73,12 @@
 <context>
     <name>main</name>
     <message>
-        <location filename="../qml/main.qml" line="102"/>
+        <location filename="../qml/main.qml" line="103"/>
         <source>Close</source>
         <translation>Zamknij</translation>
     </message>
     <message>
-        <location filename="../qml/main.qml" line="281"/>
+        <location filename="../qml/main.qml" line="282"/>
         <source>is using the camera</source>
         <translation type="unfinished"></translation>
     </message>

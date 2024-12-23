@@ -63,14 +63,14 @@ Item {
     //     onPathChanged: sysWallpaper.reload()
     // }
 
-    BackgroundHelper {
-        id: bgHelper
+    // BackgroundHelper {
+    //     id: bgHelper
 
-        onNewColor: {
-            background.color = color
-            rootItem.darkMode = darkMode
-        }
-    }
+    //     onNewColor: {
+    //         background.color = color
+    //         rootItem.darkMode = darkMode
+    //     }
+    // }
 
     Rectangle {
         id: background
