@@ -25,7 +25,7 @@ import QtQuick.Window 2.12
 import Lingmo.System 1.0 as System
 import Lingmo.StatusBar 1.0
 import Lingmo.NetworkManagement 1.0 as NM
-import LingmoUI 1.0 as LingmoUI
+import LingmoUI.CompatibleModule 3.0 as LingmoUI
 
 Item {
     id: rootItem
@@ -45,31 +45,32 @@ Item {
         timeTimer.restart()
     }
 
-    System.Wallpaper {
-        id: sysWallpaper
+    // TODO: Fix ME!
+    // System.Wallpaper {
+    //     id: sysWallpaper
 
-        function reload() {
-            if (sysWallpaper.type === 0)
-                bgHelper.setBackgound(sysWallpaper.path)
-            else
-                bgHelper.setColor(sysWallpaper.color)
-        }
+    //     function reload() {
+    //         if (sysWallpaper.type === 0)
+    //             bgHelper.setBackgound(sysWallpaper.path)
+    //         else
+    //             bgHelper.setColor(sysWallpaper.color)
+    //     }
 
-        Component.onCompleted: sysWallpaper.reload()
+    //     Component.onCompleted: sysWallpaper.reload()
 
-        onTypeChanged: sysWallpaper.reload()
-        onColorChanged: sysWallpaper.reload()
-        onPathChanged: sysWallpaper.reload()
-    }
+    //     onTypeChanged: sysWallpaper.reload()
+    //     onColorChanged: sysWallpaper.reload()
+    //     onPathChanged: sysWallpaper.reload()
+    // }
 
-    BackgroundHelper {
-        id: bgHelper
+    // BackgroundHelper {
+    //     id: bgHelper
 
-        onNewColor: {
-            background.color = color
-            rootItem.darkMode = darkMode
-        }
-    }
+    //     onNewColor: {
+    //         background.color = color
+    //         rootItem.darkMode = darkMode
+    //     }
+    // }
 
     Rectangle {
         id: background

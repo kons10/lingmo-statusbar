@@ -37,10 +37,11 @@
 
 int main(int argc, char *argv[])
 {
-    QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
+    qputenv("QT_QPA_PLATFORM", "xcb");
     QApplication app(argc, argv);
 
     const char *uri = "Lingmo.StatusBar";
+    // @uri Lingmo.StatusBar
     qmlRegisterType<SystemTrayModel>(uri, 1, 0, "SystemTrayModel");
     qmlRegisterType<ControlCenterDialog>(uri, 1, 0, "ControlCenterDialog");
     qmlRegisterType<Appearance>(uri, 1, 0, "Appearance");
